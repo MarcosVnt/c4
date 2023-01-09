@@ -1,0 +1,338 @@
+
+
+
+
+
+base del proyecto 
+https://github.com/EscuelaIt/game-connect4/tree/main/modules
+codigo que viene del master con vistas en consola .. 
+copia modelos y types 
+
+
+copiado modelos de url anterior ..
+y ver como esta la vista para rehacerla ...
+
+
+
+
+clase uno 
+
+
+
+
+1.43  tenemos construido tablero ... 
+
+
+2.02  todo realizado ... 
+
+
+REFACTORING
+opciones clousure ... en c4-player 
+
+
+2- BOTON   que permita iconos .. 
+
+componetes /iu  /c4-button.vue 
+
+@dile/boon-icon 
+
+npm i @dile/dile-button
+
+
+lit eletment 
+
+slot standar js  ... 
+
+npm i @dile/dile-button-icon
+
+
+
+
+
+
+CLA DOS DESARROLLO DE LA INTERACION CON JUGADORES ...
+ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ
+
+Hata 15 resumen ... de lo llevado ...
+
+Messages  
+
+cada mensage emite un evente y burbujea hacia arriba .. 
+    mensajes escucho en objeto window...
+
+creamos una clase mesage.js 
+creamos un componete c4mesagge
+
+en c4-game añadimos Message.TITTLE.write() , esto lo que hace  es esclar un elementeo personalizado...
+importamos el c
+
+
+escuchar mensajes enviados desde cualquier sitio gracias a la clase message..
+
+
+utilzamos metodo render .. para mostrar...
+
+
+messaage y c4-message conectados a traves de envio de enventos a traves del navegador..
+
+
+RURNO 
+
+C4-TURNO .. encargado de gestionar el turno .... 
+que hace .. 
+  1  muestra turno rojo o amarillo..
+  2  y turno dice al jugador .. pones tu...
+
+
+1- presentacion ...
+c4-game añadimos c4-toketn 
+c4-token -- hacemos pinatamos ..
+
+
+2.- logica ..
+
+
+antes vemos el gameview.js  = c4-game componete game.. 
+pone en marcha un juego ...
+
+pide numero de jugadores .. 
+
+
+doble despacho para saber que tipo de jugador es .. 
+al jugador activo ... le digo aceptame y le paso this..
+
+si es jugador normal .. userplayer
+si es machine ... machinePlayer...
+
+
+Player.js tiene el acept ... 
+hereda de ... 
+
+TECNICA DOBLE DESPACHO .. EXPLICADA 
+
+1.05  
+
+si es maquina .. hago ..
+si no es maquina escucho eventos.. 
+
+objeto turno .. le pido que me coloque una pieza...
+
+c4-game
+
+
+1.17 doble despacho .. 
+c4-runm 
+
+activePlayer.accept(this);
+
+
+turno tiene que .
+    decir al jugador activo .. donde ha decididoo colocar la maquina..
+    y el turno dice al board donde te han colocado..
+    de hijos a padres...
+
+    get column de radommachine player .. 
+        consigue una columna libre ..
+
+
+
+hacer estructura .. del juego .. gameview.js playgame
+
+
+
+1.30 RESUMEN
+c4-turno coloca ficha droptoken ..
+activeColor reactiva y actualiza clase css 
+doble despacho .. aceeptame a mi...
+
+oye visitame a mi ...
+
+
+machinPlayer ... coge columna .. dispara evento ... 
+machin-event .. que escuchamos en el padre .. c4-game...
+
+
+quien ha ganado .. game.js  doMachineCo  muestra texto abajo .. 
+
+
+userPlayerVIew .. 
+
+2.09  escuchar eventos sobre la columna ... jugador .. toca en columna y se coloca casilla ...
+
+c4-board  ..    reaccionar al hacer clic  c4-token ... 
+    pasamos el indice
+
+
+
+
+   CLASE TRES ..   AJUSTE A LA PROGRAMACION DEL JUEGO DE CONECTA 4
+
+
+   problemas .. 
+   modo demo -- mientras juega puedes poner piezas ...
+    gana jugador puede seguir poniendo piezas .. 
+
+  flag permita saber si estamos o no en situacion de recibir ficha ... 
+
+  webcomponents 
+  tienen un shadown-root .. 
+
+
+
+
+
+c4-button
+c4-player-selector 
+c4-game   this.game.reset . numplayer con ... 
+            board.updateBoard()
+            stared 
+
+
+en lit cuando pasas objetos u arrays se pone un putno si no seria string 
+.game=${this.game}
+
+a donde lo paso .. lo tengo que declarar como reactivo .. 
+static get properties() {
+
+}
+
+@ manejadores de eventos .. 
+en lit no hay doble data bind.. 
+
+
+libreria 5k   ...      pasar a nativo .. solo reescribir metodos .. ciclo vida .. attribu changes..
+
+
+44.00 doble despacho .. revisar
+
+
+
+4444444444444444444444444444444
+convertir proyecto en una pwa 
+4444444444444444444444444444444
+
+
+
+
+index.html 
+QUE ES PWA .. 
+pwa necesitamos service worker y un manifest ...
+progresive web app -> caracteristica amplia cantidad de cosas que se puede hacer .. offline .. instalarse .. etc.. 
+recibir notificaciones push ... 
+
+aplicaicones web vs aplicaciones instaladas en pc o ... 
+
+TRABAJAR OFF LINE .. pwa .. twitter ... 
+apple no pwa ... 
+
+
+convertir web en pwa .. 
+https :: no se puede si no ..
+manifest  -> metainformacion de la pagina web ..  color , 
+serviceworker -- magia negra que app pueda funcionar offline y push notificaciones ...  
+  push -.. proceso en google chrome .. recibe notiicaciones esta atento ... 
+  serviceworker .. cachea los archivos .. 
+      workbox app realizada por google .. 
+        defines como el service worker tiene que funcionar .. 
+      herramienta para generar codigo serviceworker .. 
+
+
+vite se comunica con workbox y genera codigo service worker y manifest .. 
+
+creo fichero  vite.config.js 
+  define conf de vite con la que vamos a trabajar 
+
+
+  vite.plugin pwa 
+
+  Fhttps://vite-pwa-org.netlify.app/
+  instalacmos 
+
+  npm i vite-plugin-pwa -D
+
+
+vite viene de view ... 
+awesome vite .. 
+
+https://github.com/vitejs/awesome-vite
+
+
+
+
+
+import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite'; // ayda a la config. por typescrit ayuda sintactica no necesario .. 
+import { VitePWA } from 'vite-plugin-pwa';
+
+
+//vitejs.dev/config
+export default defineConfig({
+    // cambiar cosas dentro de config
+    build: {
+        target: 'es2015', // compilacion para navegadores antiguios
+    },
+    plugins: [
+        VitePWA({
+             //registerType: 'autoUpdate' // register type propiedad que permite que hacer cuando se recarge ...  no con form 
+             registerType: 'promt',   // pregunta al usuario .. quieres actualizar..?? 
+             // tipo de registro del service worker..
+             injectRegister: 'inline'
+             })
+      ]
+
+});
+
+
+pwa .. jaleo a la hora de actualizar pagina .. por el cache del service worker .. 
+      solo en marcha en archivos de produccion .. 
+
+      npm run build
+
+          definido en paackejason .. 
+
+      npm run preview 
+          pone en marcha servicor con archivos de dist 
+
+
+
+public .. lo añade al root del proyecto ...
+
+
+
+npm run build 
+npm run preview 
+
+
+43: clase 4  nueva carpeta componetes/utils 
+mensaje ... 
+
+para actualizar la app 
+
+npm i @dile/dile-toast-persistent 
+
+
+REVISAR NO FUNCIONA CON npm run preview ....
+
+
+555555555555555555555555555555555555555555555
+
+netlify
+dominios con sitios estatiocos ... 
+
+primero llevar a produccion .. 
+git ignore 
+  dist
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
